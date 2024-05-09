@@ -33,8 +33,18 @@ jobs:
       working-directory: ./DotnetTemplate.Web
       run: npm t
 
-    - name: Send Github Slack message
-      id: slack
-      uses: slackapi/slack-github-action@v1.26.0
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    - name: Check Status Step - Success
+      id: check-step-success
+      if: success()
+      shell: bash
+      run:
+        echo "Workflow Successful."
+
+    - name: Check Status Step - Failure
+      id: check-step-Failure
+      if: failure()
+      shell: bash
+      run:
+        echo "Workflow failure."
+
+  
