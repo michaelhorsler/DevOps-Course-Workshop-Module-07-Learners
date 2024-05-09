@@ -32,3 +32,10 @@ jobs:
     - name: Test typescript code
       working-directory: ./DotnetTemplate.Web
       run: npm t
+
+    - name: Send Github Slack message
+      id: slack
+      uses: slackapi/slack-github-action@v1.26.0
+      env:
+        SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+        
