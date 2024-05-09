@@ -16,4 +16,19 @@ jobs:
 
     - name: Run C# dotnet test
       run: dotnet test
-      
+
+    - name: Install Dependencies
+      working-directory: ./DotnetTemplate.web
+      run: npm install
+
+    - name: Build NPM Typescript Code
+      working-directory: ./DotnetTemplate.web
+      run: npm run build
+
+    - name: Run linter on Typescript cod
+      working-directory: ./DotnetTemplate.web
+      run: npm run lint
+
+    - name: Test typescript code
+      working-directory: ./DotnetTemplate.web
+      run: npm t
